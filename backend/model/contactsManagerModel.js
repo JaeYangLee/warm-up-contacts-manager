@@ -1,7 +1,7 @@
 const pool = require("../database/contactsManagerDatabase");
 
 const getAllContacts = async () => {
-  const result = await pool.query("SELECI * FROM contact");
+  const result = await pool.query("SELECT * FROM contact");
   return result.rows;
 };
 
@@ -12,7 +12,7 @@ const createContact = async (
   email_address,
 ) => {
   const result = await pool.query(
-    "INSERT INTO contact(first_name, last_name, contact_number, email_address) VALUE($1, $2, $3, $4) RETURN *",
+    "INSERT INTO contact(first_name, last_name, contact_number, email_address) VALUES ($1, $2, $3, $4) RETURNING *",
     [first_name, last_name, contact_number, email_address],
   );
   return result.rows[0];
