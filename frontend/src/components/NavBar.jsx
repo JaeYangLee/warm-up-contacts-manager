@@ -1,4 +1,4 @@
-function NavBar() {
+function NavBar({ contact, onAdd }) {
   return (
     <>
       <div className="w-screen h-14 fixed top-0 bg-gray-500 flex flex-row items-center justify-center">
