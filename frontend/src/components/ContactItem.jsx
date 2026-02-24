@@ -1,9 +1,11 @@
-function ContactItem() {
+function ContactItem({ contact, onUpdate, onDelete }) {
   return (
     <>
-      <div className="w-screen bg-white">
-        <p>Contact Name</p>
-      </div>
+      <li>
+        <p>{contact.first_name}</p>
+        <p>{contact.contact_number}</p>
+        <p>{contact.email_address}</p>
+      </li>
     </>
   );
 }

@@ -1,12 +1,22 @@
 import ContactItem from "./ContactItem";
 
-function ContactList() {
+function ContactList({ contacts = [], onUpdate, onDelete }) {
   return (
     <>
-      <div className="w-screen h-screen pt-15 bg-gray-300">
-        <h1>Contact List</h1>
-        <ContactItem />
-      </div>
+      <ul>
+        {contacts.length === 0 ? (
+          <h1>No contacts...</h1>
+        ) : (
+          contacts.map((contacts) => (
+            <ContactItem
+              key={contacts.id}
+              contact={contacts}
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+            />
+          ))
+        )}
+      </ul>
     </>
   );
 }

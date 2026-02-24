@@ -75,7 +75,11 @@ function App() {
     <>
       <div>
         <NavBar />
-        <ContactList />
+        <ContactList
+          contacts={contacts}
+          onUpdate={updateContact}
+          onDelete={deleteContact}
+        />
       </div>
     </>
   );
