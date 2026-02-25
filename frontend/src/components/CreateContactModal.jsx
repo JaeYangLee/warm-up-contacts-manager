@@ -12,9 +12,8 @@ function CreateContactModal({
   const [contactNumber, setContactNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     try {
-      e.preventDefault();
       onAdd(firstName, lastName, contactNumber, emailAddress);
     } catch (err) {
       console.error("Error creating new error:", err.message);
@@ -33,7 +32,7 @@ function CreateContactModal({
         >
           <h1 className="text-xl font-bold">Create new contact</h1>
           <form
-            onClick={handleSubmit}
+            onSubmit={handleSubmit}
             className="flex flex-col items-center gap-2"
           >
             <div className="flex flex-col">
@@ -49,6 +48,8 @@ function CreateContactModal({
             <div className="flex flex-col">
               <label>Last name:</label>
               <input
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 type="text"
                 placeholder="Enter last name..."
                 className="border rounded px-2"
@@ -57,6 +58,8 @@ function CreateContactModal({
             <div className="flex flex-col">
               <label>Contact number:</label>
               <input
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
                 type="text"
                 placeholder="Enter contact number..."
                 className="border rounded px-2"
@@ -65,6 +68,8 @@ function CreateContactModal({
             <div className="flex flex-col">
               <label>E-mail address:</label>
               <input
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
                 type="text"
                 placeholder="Enter email address..."
                 className="border rounded px-2"
