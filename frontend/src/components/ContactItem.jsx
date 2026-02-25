@@ -16,7 +16,10 @@ function ContactItem({ contact, onUpdate, onDelete }) {
           <button className="border rounded px-2 shadow-[2px_2px_0px_0px]">
             Edit
           </button>
-          <button className="border rounded px-2 shadow-[2px_2px_0px_0px]">
+          <button
+            onClick={onDelete}
+            className="border rounded px-2 shadow-[2px_2px_0px_0px]"
+          >
             Delete
           </button>
         </section>

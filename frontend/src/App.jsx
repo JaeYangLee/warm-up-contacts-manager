@@ -74,7 +74,7 @@ function App() {
   return (
     <>
       <div>
-        <NavBar />
+        <NavBar onAdd={createContact} />
         <ContactList
           contacts={contacts}
           onUpdate={updateContact}

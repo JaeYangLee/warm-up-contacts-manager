@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CreateContactModal from "./CreateContactModal";
 
-function NavBar() {
+function NavBar({ onAdd }) {
   const [search, setSearch] = useState("");
   const [isCreateContactModalOpen, setCreateContactModalOpen] = useState(false);
 
@@ -40,6 +40,7 @@ function NavBar() {
       <CreateContactModal
         isCreateContactModalOpen={isCreateContactModalOpen}
         onCreateContactModalClose={() => setCreateContactModalOpen(false)}
+        onAdd={onAdd}
       />
     </>
   );

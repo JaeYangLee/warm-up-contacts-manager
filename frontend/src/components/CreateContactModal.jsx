@@ -12,9 +12,13 @@ function CreateContactModal({
   const [contactNumber, setContactNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
 
-  const handleSubmit = () => {
-    e.preventDefault();
-    onAdd(firstName, lastName, contactNumber, emailAddress);
+  const handleSubmit = (e) => {
+    try {
+      e.preventDefault();
+      onAdd(firstName, lastName, contactNumber, emailAddress);
+    } catch (err) {
+      console.error("Error creating new error:", err.message);
+    }
   };
 
   return (
@@ -35,6 +39,8 @@ function CreateContactModal({
             <div className="flex flex-col">
               <label>First name:</label>
               <input
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 type="text"
                 placeholder="Enter first name..."
                 className="border rounded px-2"
@@ -66,10 +72,16 @@ function CreateContactModal({
             </div>
 
             <section className="w-full justify-end flex flex-row gap-2 pt-4">
-              <button className="px-2 border rounded shadow-[2px_2px_0px_0px]">
+              <button
+                type="submit"
+                className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+              >
                 Add
               </button>
-              <button className="px-2 border rounded shadow-[2px_2px_0px_0px]">
+              <button
+                type="button"
+                className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+              >
                 Cancel
               </button>
             </section>
