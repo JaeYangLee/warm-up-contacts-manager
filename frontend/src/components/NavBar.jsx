@@ -1,7 +1,9 @@
 import { useState } from "react";
+import CreateContactModal from "./CreateContactModal";
 
-function NavBar({ contact, onAdd }) {
+function NavBar() {
   const [search, setSearch] = useState("");
+  const [isCreateContactModalOpen, setCreateContactModalOpen] = useState(false);
 
   const handleReset = () => {
     setSearch("");
@@ -16,24 +18,29 @@ function NavBar({ contact, onAdd }) {
             onChange={(e) => setSearch(e.target.value)}
             type="text"
             placeholder="Search..."
-            className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+            className="bg-white px-2 border rounded shadow-[2px_2px_0px_0px]"
           />
         </section>
         <section className="flex flex-row items-center justify-center gap-2">
           <button
-            onClick={onAdd}
-            className="px-2 border rounded-full shadow-[2px_2px_0px_0px]"
+            onClick={() => setCreateContactModalOpen(true)}
+            className="px-2 border rounded-full shadow-[2px_2px_0px_0px] bg-white"
           >
             +
           </button>
           <button
             onClick={handleReset}
-            className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+            className="px-2 border rounded shadow-[2px_2px_0px_0px] bg-white"
           >
             Clear
           </button>
         </section>
       </div>
+
+      <CreateContactModal
+        isCreateContactModalOpen={isCreateContactModalOpen}
+        onCreateContactModalClose={() => setCreateContactModalOpen(false)}
+      />
     </>
   );
 }
