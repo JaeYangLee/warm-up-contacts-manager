@@ -1,9 +1,11 @@
 import { BsFillPersonFill } from "react-icons/bs";
 import DeleteModal from "../modals/DeleteModal";
 import { useState } from "react";
+import EditModal from "../modals/EditModal";
 
 function ContactItem({ contact, onUpdate, onDelete }) {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
   return (
     <>
       <li className="flex flex-row items-center justify-between px-2 text-sm gap-2 py-2 border-b border-t">
@@ -16,7 +18,10 @@ function ContactItem({ contact, onUpdate, onDelete }) {
           <p>{contact.email_address}</p>
         </section>
         <section className="flex flex-col gap-2">
-          <button className="border rounded px-2 shadow-[2px_2px_0px_0px]">
+          <button
+            onClick={() => setEditModalOpen(true)}
+            className="border rounded px-2 shadow-[2px_2px_0px_0px]"
+          >
             Edit
           </button>
           <button
@@ -34,6 +39,13 @@ function ContactItem({ contact, onUpdate, onDelete }) {
         onDelete={onDelete}
         isDeleteModalOpen={isDeleteModalOpen}
         onDeleteModalClose={() => setDeleteModalOpen(false)}
+      />
+
+      <EditModal
+        value={contact}
+        contact={contact}
+        isEditModalOpen={isEditModalOpen}
+        onEditModalClose={() => setEditModalOpen(false)}
       />
     </>
   );
