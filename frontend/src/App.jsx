@@ -65,7 +65,9 @@ function App() {
   const deleteContact = async (contact_id) => {
     try {
       await axios.delete(`http://localhost:5000/contacts/${contact_id}`);
-      setContacts(contacts.filter((contacts) => contacts.id !== contact_id));
+      setContacts((prevContacts) =>
+        prevContacts.filter((contacts) => contacts.contact_id !== contact_id),
+      );
     } catch (err) {
       console.error("[frontend]: Error deleting contacts!", err.message);
     }

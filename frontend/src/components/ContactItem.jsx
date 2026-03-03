@@ -17,7 +17,7 @@ function ContactItem({ contact, onUpdate, onDelete }) {
             Edit
           </button>
           <button
-            onClick={onDelete}
+            onClick={() => onDelete(contact.contact_id)}
             className="border rounded px-2 shadow-[2px_2px_0px_0px]"
           >
             Delete

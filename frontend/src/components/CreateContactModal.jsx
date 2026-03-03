@@ -85,6 +85,7 @@ function CreateContactModal({
               </button>
               <button
                 type="button"
+                onClick={onCreateContactModalClose}
                 className="px-2 border rounded shadow-[2px_2px_0px_0px]"
               >
                 Cancel
