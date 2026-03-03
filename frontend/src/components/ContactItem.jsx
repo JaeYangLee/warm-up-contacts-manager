@@ -1,6 +1,9 @@
 import { BsFillPersonFill } from "react-icons/bs";
+import DeleteModal from "../modals/DeleteModal";
+import { useState } from "react";
 
 function ContactItem({ contact, onUpdate, onDelete }) {
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   return (
     <>
       <li className="flex flex-row items-center justify-between px-2 text-sm gap-2 py-2 border-b border-t">
@@ -17,13 +20,21 @@ function ContactItem({ contact, onUpdate, onDelete }) {
             Edit
           </button>
           <button
-            onClick={() => onDelete(contact.contact_id)}
+            onClick={() => setDeleteModalOpen(true)}
             className="border rounded px-2 shadow-[2px_2px_0px_0px]"
           >
             Delete
           </button>
         </section>
       </li>
+
+      <DeleteModal
+        key={contact.contact_id}
+        contact={contact}
+        onDelete={onDelete}
+        isDeleteModalOpen={isDeleteModalOpen}
+        onDeleteModalClose={() => setDeleteModalOpen(false)}
+      />
     </>
   );
 }
